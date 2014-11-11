@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>MAD News</title>
+
+        <!-- AngularJS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.0/angular.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.js"></script>
+
+        <!-- CSS -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet"></link>
+        <link href="style.css" rel="stylesheet"></link>
+
+
+        <!-- Our Javascript File -->
+        <script src="app.js"></script>
+    </head>
+
+    <body class="container" ng-app="MADNews">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+            <div class="page-header">
+                <h1><a href="#home">MAD News</a></h1>
+            </div>
+            <ui-view></ui-view>
+            </div>
+        </div>
+    </body>
+</html>
