@@ -2,26 +2,50 @@
     <head>
         <title>MAD News</title>
 
-        <!-- AngularJS -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.0/angular.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.js"></script>
 
-        <!-- CSS -->
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet"></link>
-        <link href="style.css" rel="stylesheet"></link>
-
-
-        <!-- Our Javascript File -->
         <script src="app.js"></script>
+
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
     </head>
 
-    <body class="container" ng-app="MADNews">
+    <body class="container" ng-app="MADNews" ng-controller="MainCtrl">
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
-            <div class="page-header">
-                <h1><a href="#home">MAD News</a></h1>
-            </div>
-            <ui-view></ui-view>
+                <div class="page-header">
+                    <h1>MAD News</h1>
+                </div>
+
+                <div ng-repeat="post in posts | orderBy: '-upvotes'">
+                    <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(post)"></span>
+                    {{ post.upvotes }}
+                    <span class="news-link">
+                        <a ng-show="post.link" href="{{ post.link }}">
+                            {{ post.title }}
+                        </a>
+                        <span ng-hide="post.link">
+                            {{ post.title }}
+                        </span>
+                    </span>
+
+                </div>
+
+                <form class="add-post-form" ng-submit="addPost()">
+                    <h3>Add a new post</h3>
+
+                    <div class="form-group">
+                        <input type="text"
+                            placeholder="title" ng-model="title"
+                            class="form-control"></input>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="link"
+                        ng-model="link" class="form-control"></input>
+                    </div>
+                    <button type="submit" class="btn btn-danger">
+                        Post
+                    </button>
+                </form>
             </div>
         </div>
     </body>
